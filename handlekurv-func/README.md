@@ -18,7 +18,7 @@ Steg for steg
 
 1. Kopier inn eksisterende kode fra denne uken
 
-1. Analyser koden for å identifisere tilstander og bivirkninger.(Pure functions, side effects/calculations, actions)
+1. Analyser koden for å identifisere tilstander og bivirkninger.(Pure functions/calculations, side effects/actions og data)
 
 1. Lag et skall i shell.ts og skill ut kode med sideeffekter.
 
