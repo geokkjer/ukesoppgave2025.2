@@ -1,6 +1,6 @@
 import type { Model } from "./types";
 
-export const initialState: Model = {
+export const initialState: Model = Object.freeze({   
   app: {
     currentPage: "products",
   },
@@ -145,5 +145,5 @@ export const initialState: Model = {
     items: [],
     total: 0
   },
-};
+});
 
