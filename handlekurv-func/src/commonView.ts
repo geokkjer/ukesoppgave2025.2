@@ -1,4 +1,6 @@
+import { render } from "./shell";
 import type { Model } from "./types";
+
 
 function mainView(): HTMLElement {
     const app = document.getElementById('app');
@@ -36,11 +38,12 @@ function navBar(model: Model): HTMLElement {
     const a1 = document.createElement('a');
     a1.href = '#';
     a1.innerText = 'Produkter';
-    a1.addEventListener('click', () => { model.app.currentPage = 'products'; });
+    a1.addEventListener('click', () => { model.app.currentPage = 'products'; render(model, null); });
+    
     const a2 = document.createElement('a');
     a2.href = '#';
     a2.innerText = 'Handlekurv 🛒';
-    a2.addEventListener('click', () => { model.app.currentPage = 'cart';  });
+    a2.addEventListener('click', () => { model.app.currentPage = 'cart'; render(model, null); });
 
     const infoCart = document.createElement('span');
     infoCart.className = 'cart-info';

@@ -19,7 +19,11 @@ if (oldState.app.currentPage === 'products') {
   navBar(state);
   footer();
 } else if (oldState.app.currentPage === 'cart') {
+
+  navBar(state);
+  footer();
   const app = document.getElementById('app');
   app!.innerHTML = 'this is the cart page';
 }
 }
+

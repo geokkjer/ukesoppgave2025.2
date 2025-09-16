@@ -2,7 +2,7 @@ import { mainView } from "./commonView";
 import type { Model } from "./types";
 
 function productsView(model: Model): HTMLElement {
-    mainView();
+    mainView(); // Vi tegner med mainView for å sikre at strukturen er på plass
     
     const mainElement = document.getElementById('main');
     for (let product of model.products) {
