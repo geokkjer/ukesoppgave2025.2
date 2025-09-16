@@ -1,6 +1,6 @@
 import type { Model } from "./types";
 
-export const model: Model = {
+export const initialState: Model = {
   app: {
     currentPage: "products",
   },
