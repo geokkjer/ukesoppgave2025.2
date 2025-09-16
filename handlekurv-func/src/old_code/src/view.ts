@@ -26,7 +26,7 @@ export function updateView() {
     app!.appendChild(cart);
   }
   else if (model.app.currentPage === 'product-detail') {
-    alert('Viser produktdetaljer');
+    alert('Viser produktdetaljer som vi må lage senere');
   }
 }
 
