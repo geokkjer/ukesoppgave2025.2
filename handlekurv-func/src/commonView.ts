@@ -4,25 +4,25 @@ import type { Model } from "./types";
 
 function mainView(): HTMLElement {
     const app = document.getElementById('app');
-     
-        // gamle version- overgang
-        // document.createElement('header');
-        // document.createElement('main');
-        // document.createElement('footer');
 
-        const header = document.createElement('header') as HTMLElement;
-        const main = document.createElement('main') as HTMLElement;
-        const footer = document.createElement('footer') as HTMLElement;
+    // gamle version- overgang
+    // document.createElement('header');
+    // document.createElement('main');
+    // document.createElement('footer');
 
-        header.id = 'header';
-        main.id = 'main';
-        footer.id = 'footer';
+    const header = document.createElement('header') as HTMLElement;
+    const main = document.createElement('main') as HTMLElement;
+    const footer = document.createElement('footer') as HTMLElement;
 
-        app?.appendChild(header);
-        app?.appendChild(main);
-        app?.appendChild(footer);
+    header.id = 'header';
+    main.id = 'main';
+    footer.id = 'footer';
 
-        return app!;    
+    app?.appendChild(header);
+    app?.appendChild(main);
+    app?.appendChild(footer);
+
+    return app!;
 }
 
 function navBar(model: Model): HTMLElement {
@@ -39,7 +39,7 @@ function navBar(model: Model): HTMLElement {
     a1.href = '#';
     a1.innerText = 'Produkter';
     a1.addEventListener('click', () => { model.app.currentPage = 'products'; render(model, null); });
-    
+
     const a2 = document.createElement('a');
     a2.href = '#';
     a2.innerText = 'Handlekurv 🛒';
@@ -49,7 +49,7 @@ function navBar(model: Model): HTMLElement {
     infoCart.className = 'cart-info';
     infoCart.innerText = `(${model.cart.items.length}) totalt: ${model.cart.total.toFixed(2)} NOK`;
 
-    
+
     li1.appendChild(a1);
     li1.appendChild(a2);
     ul.appendChild(li1);
@@ -60,9 +60,9 @@ function navBar(model: Model): HTMLElement {
     return header!;
 }
 
-function footer (): HTMLElement {
+function footer(): HTMLElement {
     const footer = document.getElementById('footer');
-    footer!.innerHTML = `
+    footer!.innerHTML = /*HTML*/ `
       <p>&copy; 2025 My E-commerce Site</p>
       <author>Michał Szczepański</author>
     `;
