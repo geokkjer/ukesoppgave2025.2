@@ -15,7 +15,7 @@ export function render(state: Model, action: string | null): void {
     ...state,
   };
 if (oldState.app.currentPage === 'products') {
-  productsView();
+  productsView(oldState);
   navBar(state);
   footer();
 } else if (oldState.app.currentPage === 'cart') {
