@@ -57,4 +57,14 @@ function navBar(model: Model): HTMLElement {
     return header!;
 }
 
-export { mainView, navBar };
+function footer (): HTMLElement {
+    const footer = document.getElementById('footer');
+    footer!.innerHTML = `
+      <p>&copy; 2025 My E-commerce Site</p>
+      <author>Michał Szczepański</author>
+    `;
+    return footer!;
+
+}
+
+export { mainView, navBar, footer };
