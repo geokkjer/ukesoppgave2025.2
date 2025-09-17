@@ -1,6 +1,7 @@
 Data Flow Between Modules
 This document describes the data flow between the main modules in the project.
 
+```markdown
 Flowchart
 +-------------------+           +-------------------+           +-------------------+
 |   model.ts        |           |   shell.ts        |           |   index.html      |
@@ -17,6 +18,8 @@ Flowchart
          |                               |                               |
          |         calls render(state)    |                              |
          +-------------------------------------------------------------->+
+```
+
 Data Flow Explanation
 types.ts
 
