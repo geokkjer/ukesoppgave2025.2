@@ -3,7 +3,9 @@ import { productsView } from "./productsView";
 import { footer, navBar } from "./commonView";
 
 export function render(state: Model, action: string | null): void {
-
+    const app = document.getElementById('app');
+    app!.innerHTML = '';
+    console.log("Rendering app...", state);
     // const renderMainView = mainView();
 
 
