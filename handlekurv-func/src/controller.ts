@@ -1,6 +1,7 @@
 import { render } from './shell';
 import type { CartItem, Model} from './types';
 
+
 export function addToCart(state:Model, productId: number,  quantity = 1) {
   const model = structuredClone(state);
 
@@ -19,7 +20,4 @@ export function addToCart(state:Model, productId: number,  quantity = 1) {
 
   render(model, null );
 
-  }
-
-  //function getProductById(model, productId);
- 
+  } 
