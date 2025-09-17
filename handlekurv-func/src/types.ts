@@ -7,7 +7,7 @@ export type Model = {
 type App = {
   currentPage: Page;
 }
-type Cart = {
+export type Cart = {
   items: CartItem[];
   total: number;
 }

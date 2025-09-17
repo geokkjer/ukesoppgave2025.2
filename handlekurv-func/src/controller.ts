@@ -18,6 +18,6 @@ export function addToCart(state:Model, productId: number,  quantity = 1) {
     model.cart.items.push({ quantity, product });
   }
 
-  render(model, null );
+  // render(model, null );
 
   } 
