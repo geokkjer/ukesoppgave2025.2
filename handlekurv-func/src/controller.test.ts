@@ -12,9 +12,9 @@ test ("addToCart",()=>{
         ...initialState,
     }
     // Act
-    const updated = addToCart(model, 1);
+    const updatedModel = addToCart(model, 1);
     // Assert
-    expect(updated?.cart.items).toHaveLength(1);
+    expect(updatedModel?.cart.items).toHaveLength(1);
 
 } )
 
