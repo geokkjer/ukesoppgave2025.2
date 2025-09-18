@@ -1,8 +1,10 @@
+import { footer } from "../components/footer";
 import type { DispatchFunction, Model } from "../types";
 
 export function mainView(state: Model, dispatch: DispatchFunction): HTMLElement {
     const app = document.getElementById('app');
     const element = document.createElement('main')!;
+    const footer = footer();
     element.id = 'main';
     element.innerHTML = `
             <h1>Welcome to the Store</h1>
@@ -11,6 +13,7 @@ export function mainView(state: Model, dispatch: DispatchFunction): HTMLElement 
             <button id="login-button">Logg inn</button>
     `;
     app!.replaceChildren(element);
+    app!.appendChild(footer);
     document.getElementById('login-button')!.addEventListener('click', () => {
         const username = (element.querySelector('input[type="text"]') as HTMLInputElement).value;
         const password = (element.querySelector('input[type="password"]') as HTMLInputElement).value;
