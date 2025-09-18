@@ -3,21 +3,45 @@ This document describes the data flow between the main modules in the project.
 
 ```markdown
 Flowchart
+
 +-------------------+           +-------------------+           +-------------------+
-|   model.ts        |           |   shell.ts        |           |   index.html      |
+|   types.ts        |           |   model.ts        |           |   render.ts        |
 |-------------------|           |-------------------|           |-------------------|
-| - Exports         |           | - Imports Model   |           | - Loads initial   |
-|   initialState    |           | - Renders UI      |           |   state & calls   |
-|   (Model object)  |           |   based on state  |           |   render()        |
+| - Defines types   |           | - Exports         |           | - Imports Model   |
+|   (Model, etc.)   |           |   initialState    |           | - Renders UI      |
+|                   |           |   (Model object)  |           |   based on state  |
 +-------------------+           +-------------------+           +-------------------+
-         |                               ^                               |
-         |                               |                               |
-         |         imports initialState   |                               |
-         +------------------------------>+                               |
-         |                               |                               |
-         |                               |                               |
-         |         calls render(state)    |                              |
-         +-------------------------------------------------------------->+
+         |                               |                               ^
+         |  imports types                |  imports types                |
+         +------------------------------>+------------------------------+
+                                         |
+                                         v
+                                 +-------------------+
+                                 |   index.html      |
+                                 |-------------------|
+                                 | - Imports         |
+                                 |   initialState    |
+                                 |   from model.ts   |
+                                 | - Imports render  |
+                                 |   from shell.ts   |
+                                 | - Calls           |
+                                 |   render(state)   |
+                                 +-------------------+
+                                         |
+                                         v
+                                 +-------------------+
+                                 |   render()        |
+                                 |   branching, which|
+                                 |   page do we draw |
+                                 +-------------------+
+                                         |
+                                         v
+                              +----------+----------+
+                              |                     |
+                              v                     v
+                    +-----------------+   +-----------------+
+                    | mainView/login  |   | productsView    |
+                    +-----------------+   +-----------------+
 ```
 
 Data Flow Explanation

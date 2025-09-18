@@ -1,13 +1,13 @@
 
 import type { Model } from "../types";
 import { addToCart } from "../controller";
-import { render } from "../render";
 
 
 function productsView(state: Model): HTMLElement {
     const model = structuredClone (state); 
-    
-    const mainElement = document.getElementById('main');
+    const main = document.getElementById('main');
+    main!.innerHTML = '';
+
     for (let product of model.products) {
         const productCard = document.createElement('article');
         productCard.className = 'product-card';
@@ -34,9 +34,9 @@ function productsView(state: Model): HTMLElement {
         productCard.appendChild(image);
         productCard.appendChild(productInfo);
         productCard.appendChild(footer);
-        mainElement!.appendChild(productCard);
+        main!.appendChild(productCard);
       }
-      return mainElement!;
+      return main!;
   }
   
   export { productsView };
