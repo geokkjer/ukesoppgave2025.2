@@ -1,5 +1,5 @@
-import { render } from "./shell";
-import type { Model } from "./types";
+import { render } from "../render";
+import type { Model } from "../types";
 
 
 function mainView(): HTMLElement {

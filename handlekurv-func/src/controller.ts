@@ -1,4 +1,4 @@
-import { render } from './shell';
+import { render } from './render';
 import type { CartItem, Model} from './types';
 
 

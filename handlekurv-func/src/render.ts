@@ -1,6 +1,6 @@
 import type { Model } from "./types";
 import { productsView } from "./productsView";
-import { footer, navBar } from "./commonView";
+import { footer, navBar } from "./views/commonView";
 
 export function render(state: Model, action: string | null): void {
     const app = document.getElementById('app');
