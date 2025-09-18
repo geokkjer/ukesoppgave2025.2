@@ -1,9 +1,9 @@
-
+import type { DispatchFunction } from "../types";
 import type { Model } from "../types";
-import { addToCart } from "../controller";
 
 
-function productsView(state: Model): HTMLElement {
+
+function productsView(state: Model, dispatch: DispatchFunction): HTMLElement {
     const model = structuredClone (state); 
     const main = document.getElementById('main');
     main!.innerHTML = '';
@@ -29,7 +29,8 @@ function productsView(state: Model): HTMLElement {
         const button = document.createElement('button');
         button.className = 'btn btn-success';
         button.innerText = 'Legg i handlekurv';
-        button.addEventListener('click', () => {addToCart(state, product.id); });
+        // button.addEventListener('click', () => {addToCart(state, product.id); });
+        button.addEventListener('click',dispatch("addToCart", product.id))
         footer.appendChild(button);
         productCard.appendChild(image);
         productCard.appendChild(productInfo);
