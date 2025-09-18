@@ -4,7 +4,7 @@ export type Model = {
   cart: Cart;
 }
 
-type App = {
+export type App = {
   currentPage: Page;
 }
 export type Cart = {
@@ -26,4 +26,4 @@ export type Product = {
 
 type ProductCategory = "Elektronikk" | "Hjem" | "Livsstil";
 
-type Page = "products" | "product-detail" | "cart";
+export type Page = "products" | "product-detail" | "cart";

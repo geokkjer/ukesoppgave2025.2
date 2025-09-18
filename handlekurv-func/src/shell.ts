@@ -26,5 +26,9 @@ export function render(state: Model, action: string | null): void {
         const app = document.getElementById('app');
         app!.innerHTML = 'this is the cart page';
     }
+
+    const handleEvent = (action: string) => render(model, action);
+    const element = updateView(model, handleEvent);
+    app!.replaceChildren(element);
 }
 

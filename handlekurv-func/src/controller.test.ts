@@ -1,20 +1,20 @@
 import { initialState } from './model';
-import { vi } from 'vitest';
 import { expect, test } from 'vitest';
 import { addToCart } from './controller';
+import type { Model } from './types';
 // import type { Model, CartItem, Cart } from './types';
 
 
 
 test ("addToCart",()=>{
     //Arrange
-    let state= initialState
-    // const render = vi.fn (
-        // sladknaslk
-// )
+    const model: Model = {
+        ...initialState,
+    }
     // Act
-    addToCart(state, 1, 1)
+    const updated = addToCart(model, 1);
+    // Assert
+    expect(updated?.cart.items).toHaveLength(1);
 
-    expect(state.cart.items.length).toBe(1)
 } )
 
