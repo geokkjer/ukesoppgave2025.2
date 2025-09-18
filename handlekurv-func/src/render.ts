@@ -24,8 +24,8 @@ export function render(state: Model, action: string | null, value: any): void {
         app.replaceChildren(element);
     }
     // Render views based on current page    
-    if (stateCopy.app.currentPage === 'login') mainView(stateCopy, dispatch);
-    else if (stateCopy.app.currentPage === 'products') productsView(stateCopy, dispatch);
+    if (state.app.currentPage === 'login') mainView(stateCopy, dispatch);
+    else if (state.app.currentPage === 'products') productsView(stateCopy, dispatch);
 
 
 
