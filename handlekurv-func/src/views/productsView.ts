@@ -30,7 +30,7 @@ function productsView(state: Model, dispatch: DispatchFunction): HTMLElement {
         button.className = 'btn btn-success';
         button.innerText = 'Legg i handlekurv';
         // button.addEventListener('click', () => {addToCart(state, product.id); });
-        button.addEventListener('click',dispatch("addToCart", product.id))
+        button.addEventListener('click', () => dispatch("addToCart", product.id));
         footer.appendChild(button);
         productCard.appendChild(image);
         productCard.appendChild(productInfo);

@@ -1,12 +1,12 @@
 import type { CartItem, Model } from './types';
 
 
-export function addToCart(state: Model, productId: number, quantity = 1): Model | void {
+export function addToCart(state: Model, productId: number, quantity = 1): Model {
   const model = structuredClone(state);
 
   const product = model.products.find((product) => product.id === productId)
   //const product: CartItem = getProductById(model, productId);
-  if (!product) return;
+  if (!product) return model;
 
   const existingItem = model.cart.items.find(
     (item: CartItem) => item.product.id === productId,

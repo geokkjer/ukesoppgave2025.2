@@ -31,7 +31,7 @@ export type Product = {
 export type DispatchFunction = {
     (action: 'login', value: { username: string, password: string }) : void;
 
-    (action: 'addToCart', value:  Number ) : void;
+    (action: 'addToCart', value:  number ) : void;
 };
 type ProductCategory = "Elektronikk" | "Hjem" | "Livsstil";
 
