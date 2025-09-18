@@ -1,8 +1,7 @@
-import { render } from './render';
-import type { CartItem, Model} from './types';
+import type { CartItem, Model } from './types';
 
 
-export function addToCart(state:Model, productId: number,  quantity = 1): Model | void {
+export function addToCart(state: Model, productId: number, quantity = 1): Model | void {
   const model = structuredClone(state);
 
   const product = model.products.find((product) => product.id === productId)
@@ -15,10 +14,17 @@ export function addToCart(state:Model, productId: number,  quantity = 1): Model 
   if (existingItem) {
     existingItem.quantity += quantity;
   } else {
-    model.cart.items.push({  product, quantity });
+    model.cart.items.push({ product, quantity });
   }
 
   // render(model, null );
 
   return model;
-} 
+}
+export function loginTask(model: Model, credentials: { username: string, password: string }): Model {
+  const state = structuredClone(model);
+  state.credentials!.username = credentials.username;
+  state.credentials!.password = credentials.password;
+  state.app.currentPage = "products";
+  return state;
+}

@@ -2,6 +2,10 @@ export type Model = {
   app: App,
   products: Product[],
   cart: Cart;
+  credentials: { 
+    username: string, 
+    password: string 
+  } | null;
 }
 
 export type App = {
@@ -24,6 +28,9 @@ export type Product = {
   category: ProductCategory;
 }
 
+export type DispatchFunction = {
+    (action: 'login', value: { username: string, password: string }) : void;
+};
 type ProductCategory = "Elektronikk" | "Hjem" | "Livsstil";
 
-export type Page = "products" | "product-detail" | "cart";
+export type Page = "login" | "products" | "product-detail" | "cart";

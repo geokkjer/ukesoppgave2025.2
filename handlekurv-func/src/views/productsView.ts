@@ -1,10 +1,10 @@
-import { mainView } from "./commonView";
-import type { Model } from "./types";
-import { addToCart } from "./controller";
-import { render } from "./shell";
+
+import type { Model } from "../types";
+import { addToCart } from "../controller";
+import { render } from "../render";
+
 
 function productsView(state: Model): HTMLElement {
-    mainView(); // Vi tegner med mainView for å sikre at strukturen er på plass
     const model = structuredClone (state); 
     
     const mainElement = document.getElementById('main');
@@ -29,7 +29,7 @@ function productsView(state: Model): HTMLElement {
         const button = document.createElement('button');
         button.className = 'btn btn-success';
         button.innerText = 'Legg i handlekurv';
-        button.addEventListener('click', () => {addToCart(state, product.id); render(state, null); });
+        button.addEventListener('click', () => {addToCart(state, product.id); });
         footer.appendChild(button);
         productCard.appendChild(image);
         productCard.appendChild(productInfo);

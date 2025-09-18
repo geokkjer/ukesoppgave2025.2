@@ -2,7 +2,7 @@ import type { Model } from "./types";
 
 export const initialState: Model = Object.freeze({   
   app: {
-    currentPage: "products",
+    currentPage: "login",
   },
   products: [
     {
@@ -144,6 +144,10 @@ export const initialState: Model = Object.freeze({
   cart: {
     items: [],
     total: 0
+  },
+  credentials: { 
+    username: "", 
+    password: "" 
   },
 });
 
