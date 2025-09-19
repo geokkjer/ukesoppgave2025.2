@@ -13,7 +13,7 @@ export function render(state: Model, action: string | null, value: any): void {
     // Handle actions
     if (action == 'login') {
         state = loginTask(state, value);
-        const app = document.getElementById("app")!;
+        
         app!.innerHTML = '';
         const element = mainView(state, dispatch);
         app.replaceChildren(element);
@@ -25,11 +25,13 @@ export function render(state: Model, action: string | null, value: any): void {
         app.replaceChildren(element);
     }
     // Render views based on current page    
-    if (state.app.currentPage === 'login') mainView(stateCopy, dispatch);
+    let element: HTMLElement;
+    if (state.app.currentPage === 'login') element = mainView(stateCopy, dispatch);
     else if (state.app.currentPage === 'products') productsView(stateCopy, dispatch);
     else if (state.app.currentPage === 'cart') cartView(stateCopy, dispatch);
-
-
+    
+    const app = document.getElementById("app")!;
+    app.replaceChildren(element);
 
 }
 
