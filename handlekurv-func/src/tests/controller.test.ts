@@ -15,6 +15,8 @@ test ("addToCart",()=>{
     const updatedModel = addToCart(model, 1);
     // Assert
     expect(updatedModel?.cart.items).toHaveLength(1);
+    expect(updatedModel?.cart.items[0].quantity).toBe(1);
+    expect(updatedModel?.cart.items[0].product.id).toBe(1);
 
 } )
  test ("tester loginTask",()=> {

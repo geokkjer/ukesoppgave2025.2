@@ -1,3 +1,5 @@
+import type { Model } from '../types';
+
 export function navBar(model: Model): HTMLElement {
     const header = document.getElementById('header');
     const nav = document.createElement('nav');
@@ -11,12 +13,12 @@ export function navBar(model: Model): HTMLElement {
     const a1 = document.createElement('a');
     a1.href = '#';
     a1.innerText = 'Produkter';
-    a1.addEventListener('click', () => { model.app.currentPage = 'products'; render(model, null); });
+    a1.addEventListener('click', () => { model.app.currentPage = 'products'; });
 
     const a2 = document.createElement('a');
     a2.href = '#';
     a2.innerText = 'Handlekurv 🛒';
-    a2.addEventListener('click', () => { model.app.currentPage = 'cart'; render(model, null); });
+    a2.addEventListener('click', () => { model.app.currentPage = 'cart';  });
 
     const infoCart = document.createElement('span');
     infoCart.className = 'cart-info';
