@@ -1,8 +1,10 @@
-export function cartView(): HTMLElement {
+import type { Model, CartItem, DispatchFunction } from "../types";
+
+export function cartView(state: Model, dispatch: DispatchFunction): HTMLElement {
+    const model = structuredClone(state);
+    const app = document.getElementById('app');
     const header = document.createElement('header');
     const footer = document.createElement('footer');
-    generateNavbar(header);
-    generateFooter(footer);
     const cartElement = document.createElement("div");
     cartElement.className = "cart";
     cartElement.appendChild(header);
@@ -22,10 +24,11 @@ export function cartView(): HTMLElement {
         for (const item of model.cart.items){
             cartElement.appendChild(cartCard(item));
         }
-        cartElement.appendChild(totalCard());
+        cartElement.appendChild(totalCard(model));
     }
     cartElement.appendChild(footer);
-    return cartElement;
+    app?.appendChild(cartElement);
+    return app!;
 }
 
 function cartCard(item: CartItem): HTMLElement {
@@ -38,10 +41,10 @@ function cartCard(item: CartItem): HTMLElement {
     const button = document.createElement("button");
     button.className = "btn btn-secondary";
     button.innerText = "Fjern";
-    button.addEventListener("click", () => {
-        removeFromCart(item.product.id);
-        updateView();
-    });
+    // button.addEventListener("click", () => {
+    //     removeFromCart(item.product.id);
+    //     updateView();
+    // });
     const price = document.createElement("p");
     price.innerText = `totalt: ${(item.product.price * item.quantity).toFixed(2)} NOK`;
     card.appendChild(title);
@@ -51,7 +54,8 @@ function cartCard(item: CartItem): HTMLElement {
     return card;
 }
 
-function totalCard(): HTMLElement {
+function totalCard(state: Model): HTMLElement {
+    const model = structuredClone(state);
     const card = document.createElement("div");
     card.className = "total-card";
     const title = document.createElement("h3");
@@ -62,11 +66,11 @@ function totalCard(): HTMLElement {
     const button =document.createElement("button");
     button.className = "btn btn-primary";
     button.innerText = "Tøm kasse";
-    button.addEventListener("click", () => {
-        model.cart.items = [];
-        model.cart.total = 0;
-        updateView();
-    });
+    // button.addEventListener("click", () => {
+    //     model.cart.items = [];
+    //     model.cart.total = 0;
+    //     updateView();
+    // });
     card.appendChild(title);
     card.appendChild(price);
     card.appendChild(button);

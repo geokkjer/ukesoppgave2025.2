@@ -3,6 +3,7 @@ import type { Model, DispatchFunction } from "./types";
 import { mainView } from "./views/mainView";
 import { productsView } from "./views/productsView";
 import { addToCart } from "./controller"
+import { cartView } from "./views/cartView";
 
 
 export function render(state: Model, action: string | null, value: any): void {
@@ -26,6 +27,7 @@ export function render(state: Model, action: string | null, value: any): void {
     // Render views based on current page    
     if (state.app.currentPage === 'login') mainView(stateCopy, dispatch);
     else if (state.app.currentPage === 'products') productsView(stateCopy, dispatch);
+    else if (state.app.currentPage === 'cart') cartView(stateCopy, dispatch);
 
 
 
