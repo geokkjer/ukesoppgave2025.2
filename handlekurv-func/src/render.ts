@@ -4,6 +4,8 @@ import { loginView } from "./views/loginView";
 import { productsView } from "./views/productsView";
 import { addToCart } from "./controller"
 import { cartView } from "./views/cartView";
+import { navBar } from "./components/navBar";
+import { footer } from "./components/footer";
 
 
 export function render(state: AppState, action: string | null, value: any): void {
@@ -14,23 +16,29 @@ export function render(state: AppState, action: string | null, value: any): void
     // Handle actions
     if (action == 'login') {
         state = loginTask(state, value);
-        
-        app!.innerHTML = '';
-        const element = loginView(state, dispatch);
-        app.replaceChildren(element);
     }
     if (action == 'addToCart') {
-        const state = addToCart(stateCopy,value);
-        const element = productsView(state, dispatch);
-        const app = document.getElementById("app")!;
-        app.replaceChildren(element);
+        state = addToCart(stateCopy,value);
+        console.log(state.cart);
+        
     }
     // Render views based on current page    
     let element: HTMLElement;
-    if (state.app.currentPage === 'login') element = loginView(stateCopy, dispatch);
-    else if (state.app.currentPage === 'products') element = productsView(stateCopy, dispatch);
-    else if (state.app.currentPage === 'cart') element = cartView(stateCopy, dispatch);
-    else {
+    if (state.app.currentPage === 'login') {
+        element = loginView(stateCopy, dispatch);
+        app.replaceChildren(element);
+    } else if (state.app.currentPage === 'products') {
+        app.replaceChildren();
+        const nav = navBar(stateCopy);
+        element = productsView(stateCopy, dispatch);
+        const foot = footer(); 
+        nav.appendChild(element);
+        element = nav;
+        element.appendChild(foot);
+        app.replaceChildren(element);
+    } else if (state.app.currentPage === 'cart') {
+        element = cartView(stateCopy, dispatch);
+    } else {
         element = document.createElement('div');
         element.textContent = 'Page not found';
     }

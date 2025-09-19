@@ -40,7 +40,7 @@ Flowchart
                               |                     |
                               v                     v
                     +-----------------+   +-----------------+
-                    | mainView/login  |   | productsView    |
+                    | mainView/login  |-->| productsView    |
                     +-----------------+   +-----------------+
 ```
 

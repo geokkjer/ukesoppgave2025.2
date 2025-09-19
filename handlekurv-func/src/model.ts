@@ -2,7 +2,7 @@ import type { AppState } from "./types";
   
 export const initialAppState: AppState = Object.freeze({
   app: {
-    currentPage: "login",
+    currentPage: "products",
   },
   products: [
     {

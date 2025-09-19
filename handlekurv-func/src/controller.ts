@@ -15,9 +15,6 @@ export function addToCart(state: AppState, productId: number, quantity = 1): App
   } else {
     model.cart.items.push({ product, quantity });
   }
-
-  // render(model, null );
-
   return model;
 }
 export function loginTask(model: AppState, credentials: { username: string, password: string }): AppState {
@@ -32,6 +29,11 @@ export function loginTask(model: AppState, credentials: { username: string, pass
       user.username === credentials.username 
       && user.password === credentials.password)
       
+    const id = state.users.find((user: User) => 
+      user.username === credentials.username 
+      && user.password === credentials.password)?.id;
+    console.log(id);
+    
     if(exist) {
       alert('Velkommen ' + credentials.username);
       state.app.currentPage = "products";

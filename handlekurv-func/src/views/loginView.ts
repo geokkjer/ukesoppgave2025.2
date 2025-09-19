@@ -2,7 +2,6 @@ import { footer } from "../components/footer";
 import type { DispatchFunction, AppState } from "../types";
 
 export function loginView(state: AppState, dispatch: DispatchFunction): HTMLElement {
-    // const app = document.getElementById('app');
     const element = document.createElement('main')!;
     const addFooter = footer();
     element.id = 'main';
@@ -12,7 +11,6 @@ export function loginView(state: AppState, dispatch: DispatchFunction): HTMLElem
             <input type="password" placeholder="Passord" />
             <button >Logg inn</button>
     `;
-    // app!.replaceChildren(element);
     element.appendChild(addFooter);
     element.querySelector('button')!.addEventListener('click', () => {
         const username = (element.querySelector('input[type="text"]') as HTMLInputElement).value;

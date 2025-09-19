@@ -1,7 +1,7 @@
-import type { Model } from '../types';
+import type { AppState } from '../types';
 
-export function navBar(model: Model): HTMLElement {
-    const header = document.getElementById('header');
+export function navBar(model: AppState): HTMLElement {
+    const element = document.createElement('header');
     const nav = document.createElement('nav');
     nav.className = 'navbar';
     const logo = document.createElement('h1');
@@ -12,13 +12,13 @@ export function navBar(model: Model): HTMLElement {
     const li1 = document.createElement('li');
     const a1 = document.createElement('a');
     a1.href = '#';
-    a1.innerText = 'Produkter';
-    a1.addEventListener('click', () => { model.app.currentPage = 'products'; });
+    a1.innerText = 'Handle produkter 🛍';
+    // a1.addEventListener('click', () => { model.app.currentPage = 'products'; });
 
     const a2 = document.createElement('a');
     a2.href = '#';
     a2.innerText = 'Handlekurv 🛒';
-    a2.addEventListener('click', () => { model.app.currentPage = 'cart';  });
+    // a2.addEventListener('click', () => { model.app.currentPage = 'cart';  });
 
     const infoCart = document.createElement('span');    
     infoCart.className = 'cart-info';
@@ -31,6 +31,6 @@ export function navBar(model: Model): HTMLElement {
     ul.appendChild(infoCart);
     nav.appendChild(logo);
     nav.appendChild(ul);
-    header!.appendChild(nav);
-    return header!;
+    element.appendChild(nav);
+    return element;
 }

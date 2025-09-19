@@ -1,12 +1,12 @@
 import type { DispatchFunction } from "../types";
-import type { Model } from "../types";
+import type { AppState } from "../types";
 
 
 
-function productsView(state: Model, dispatch: DispatchFunction): HTMLElement {
+function productsView(state: AppState, dispatch: DispatchFunction): HTMLElement {
     const model = structuredClone (state); 
-    const main = document.getElementById('main');
-    main!.innerHTML = '';
+    const main = document.createElement('main');
+    main.id = 'main';
 
     for (let product of model.products) {
         const productCard = document.createElement('article');
@@ -29,15 +29,14 @@ function productsView(state: Model, dispatch: DispatchFunction): HTMLElement {
         const button = document.createElement('button');
         button.className = 'btn btn-success';
         button.innerText = 'Legg i handlekurv';
-        // button.addEventListener('click', () => {addToCart(state, product.id); });
         button.addEventListener('click', () => dispatch("addToCart", product.id));
         footer.appendChild(button);
         productCard.appendChild(image);
         productCard.appendChild(productInfo);
         productCard.appendChild(footer);
-        main!.appendChild(productCard);
+        main.appendChild(productCard);
       }
-      return main!;
+      return main;
   }
   
   export { productsView };
