@@ -1,6 +1,6 @@
-import type { Model } from "./types";
-
-export const initialState: Model = Object.freeze({   
+import type { AppState } from "./types";
+  
+export const initialAppState: AppState = Object.freeze({
   app: {
     currentPage: "login",
   },
@@ -145,9 +145,27 @@ export const initialState: Model = Object.freeze({
     items: [],
     total: 0
   },
-  credentials: { 
-    username: "", 
-    password: "" 
+  users: [{
+    id: 1,
+    username: "Charles",
+    password: "hemmelig"
   },
+  {
+    id: 2,
+    username: "Michal",
+    password: "1234"
+  },
+  {
+    id: 3,
+    username: "Alex",
+    password: "passord123"
+  },
+  {
+    id:4,
+    username: "Mattias",
+    password: "passsword"
+  }
+],
+
 });
 

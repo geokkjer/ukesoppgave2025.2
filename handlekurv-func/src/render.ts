@@ -1,12 +1,12 @@
 import { loginTask } from "./controller";
-import type { Model, DispatchFunction } from "./types";
-import { mainView } from "./views/mainView";
+import type { AppState, DispatchFunction } from "./types";
+import { loginView } from "./views/loginView";
 import { productsView } from "./views/productsView";
 import { addToCart } from "./controller"
 import { cartView } from "./views/cartView";
 
 
-export function render(state: Model, action: string | null, value: any): void {
+export function render(state: AppState, action: string | null, value: any): void {
     const stateCopy = structuredClone(state);
     const dispatch: DispatchFunction = (action, value) => render(state, action, value);
     const app = document.getElementById("app")!;
@@ -16,21 +16,25 @@ export function render(state: Model, action: string | null, value: any): void {
         state = loginTask(state, value);
         
         app!.innerHTML = '';
-        const element = mainView(state, dispatch);
+        const element = loginView(state, dispatch);
         app.replaceChildren(element);
     }
     if (action == 'addToCart') {
         const state = addToCart(stateCopy,value);
         const element = productsView(state, dispatch);
         const app = document.getElementById("app")!;
-        app.replaceChildren(element.id);
+        app.replaceChildren(element);
     }
     // Render views based on current page    
     let element: HTMLElement;
-    if (state.app.currentPage === 'login') element = mainView(stateCopy, dispatch);
-    else if (state.app.currentPage === 'products') productsView(stateCopy, dispatch);
-    else if (state.app.currentPage === 'cart') cartView(stateCopy, dispatch);
-    
+    if (state.app.currentPage === 'login') element = loginView(stateCopy, dispatch);
+    else if (state.app.currentPage === 'products') element = productsView(stateCopy, dispatch);
+    else if (state.app.currentPage === 'cart') element = cartView(stateCopy, dispatch);
+    else {
+        element = document.createElement('div');
+        element.textContent = 'Page not found';
+    }
+
     app.replaceChildren(element);
 
 }

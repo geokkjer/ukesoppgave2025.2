@@ -1,7 +1,7 @@
 import { footer } from "../components/footer";
-import type { DispatchFunction, Model } from "../types";
+import type { DispatchFunction, AppState } from "../types";
 
-export function mainView(state: Model, dispatch: DispatchFunction): HTMLElement {
+export function loginView(state: AppState, dispatch: DispatchFunction): HTMLElement {
     // const app = document.getElementById('app');
     const element = document.createElement('main')!;
     const addFooter = footer();
@@ -11,7 +11,6 @@ export function mainView(state: Model, dispatch: DispatchFunction): HTMLElement 
             <input type="text" placeholder="Brukernavn" />
             <input type="password" placeholder="Passord" />
             <button >Logg inn</button>
-            <footer>klasdjbskj</footer>
     `;
     // app!.replaceChildren(element);
     element.appendChild(addFooter);

@@ -1,13 +1,14 @@
-export type Model = {
+export type AppState = {
   app: App,
   products: Product[],
   cart: Cart;
-  credentials: { 
-    username: string, 
-    password: string 
-  } | null;
+  users: User[];
 }
-
+export type User = {
+  id: number;
+  username: string;
+  password: string;
+}
 export type App = {
   currentPage: Page;
 }
@@ -29,9 +30,9 @@ export type Product = {
 }
 
 export type DispatchFunction = {
-    (action: 'login', value: { username: string, password: string }) : void;
+  (action: 'login', value: { username: string, password: string }): void;
 
-    (action: 'addToCart', value:  number ) : void;
+  (action: 'addToCart', value: number): void;
 };
 type ProductCategory = "Elektronikk" | "Hjem" | "Livsstil";
 

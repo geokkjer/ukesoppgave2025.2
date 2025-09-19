@@ -20,7 +20,7 @@ export function navBar(model: Model): HTMLElement {
     a2.innerText = 'Handlekurv 🛒';
     a2.addEventListener('click', () => { model.app.currentPage = 'cart';  });
 
-    const infoCart = document.createElement('span');
+    const infoCart = document.createElement('span');    
     infoCart.className = 'cart-info';
     infoCart.innerText = `(${model.cart.items.length}) totalt: ${model.cart.total.toFixed(2)} NOK`;
 
