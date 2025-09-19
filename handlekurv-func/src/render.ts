@@ -6,6 +6,9 @@ import { addToCart } from "./controller"
 import { cartView } from "./views/cartView";
 import { navBar } from "./components/navBar";
 import { footer } from "./components/footer";
+import { mainView } from "./views/mainView";
+import { navigation } from "./controller";
+
 
 
 export function render(state: AppState, action: string | null, value: any): void {
@@ -19,17 +22,31 @@ export function render(state: AppState, action: string | null, value: any): void
     }
     if (action == 'addToCart') {
         state = addToCart(stateCopy,value);
-        console.log(state.cart);
         
+    }
+    if (action === 'products-view') {
+        state = navigation(stateCopy, value);
+        console.log('Current page set to products', state.app.currentPage);
+    }
+    if (action === 'cart-view') {
+        state = navigation(stateCopy, value);
+        console.log('Current page set to cart', state.app.currentPage);
+    }
+    if (action === 'login-view') {
+        state = navigation(stateCopy, value);
+        console.log('Current page set to login', state.app.currentPage);
     }
     // Render views based on current page    
     let element: HTMLElement;
     if (state.app.currentPage === 'login') {
         element = loginView(stateCopy, dispatch);
         app.replaceChildren(element);
+    } else if (state.app.currentPage === 'main') {
+        element = mainView(stateCopy, dispatch);
+        app.replaceChildren(element);
     } else if (state.app.currentPage === 'products') {
         app.replaceChildren();
-        const nav = navBar(stateCopy);
+        const nav = navBar(stateCopy, dispatch);
         element = productsView(stateCopy, dispatch);
         const foot = footer(); 
         nav.appendChild(element);
@@ -38,6 +55,7 @@ export function render(state: AppState, action: string | null, value: any): void
         app.replaceChildren(element);
     } else if (state.app.currentPage === 'cart') {
         element = cartView(stateCopy, dispatch);
+        app.replaceChildren(element);
     } else {
         element = document.createElement('div');
         element.textContent = 'Page not found';

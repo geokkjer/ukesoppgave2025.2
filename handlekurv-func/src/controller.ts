@@ -40,20 +40,14 @@ export function loginTask(model: AppState, credentials: { username: string, pass
     } else {
       alert('Feil brukernavn eller passord');
     }
-
-
-
-
-    // for (let user of state.users) {
-    //   if(user.username === credentials.username) {
-    //     alert('Riktig!!!!')
-    //     state.app.currentPage = "products";
-    //   }
-    // }
     
   } else {
     alert('Feil brukernavn eller passord');
   }
+  return state;
+}
+export function navigation(state: AppState, value: any): AppState {
+  state.app.currentPage = value;
   return state;
 }
   

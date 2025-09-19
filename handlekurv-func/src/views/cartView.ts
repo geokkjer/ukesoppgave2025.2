@@ -1,8 +1,7 @@
-import type { Model, CartItem, DispatchFunction } from "../types";
+import type { AppState, CartItem, DispatchFunction } from "../types";
 
-export function cartView(state: Model, dispatch: DispatchFunction): HTMLElement {
+export function cartView(state: AppState, dispatch: DispatchFunction): HTMLElement {
     const model = structuredClone(state);
-    const app = document.getElementById('app');
     const header = document.createElement('header');
     const footer = document.createElement('footer');
     const cartElement = document.createElement("div");
@@ -27,8 +26,7 @@ export function cartView(state: Model, dispatch: DispatchFunction): HTMLElement 
         cartElement.appendChild(totalCard(model));
     }
     cartElement.appendChild(footer);
-    app?.appendChild(cartElement);
-    return app!;
+    return cartElement;
 }
 
 function cartCard(item: CartItem): HTMLElement {
@@ -54,13 +52,13 @@ function cartCard(item: CartItem): HTMLElement {
     return card;
 }
 
-function totalCard(state: Model): HTMLElement {
+function totalCard(state: AppState): HTMLElement {
     const model = structuredClone(state);
     const card = document.createElement("div");
     card.className = "total-card";
     const title = document.createElement("h3");
     title.innerText = "Total";
-    const total = model.cart.items.reduce((acc, item) => acc + item.product.price * item.quantity, 0).toFixed(2);
+    const total = model.cart.items.reduce((acc: number, item: CartItem) => acc + item.product.price * item.quantity, 0).toFixed(2);
     const price = document.createElement("p");
     price.innerText = `totalt: ${total} NOK`;
     const button =document.createElement("button");
