@@ -8,6 +8,7 @@ import { navBar } from "./components/navBar";
 import { footer } from "./components/footer";
 import { mainView } from "./views/mainView";
 import { navigation } from "./controller";
+import { CartView } from "./views/cartClass";
 
 
 
@@ -54,7 +55,7 @@ export function render(state: AppState, action: string | null, value: any): void
         element.appendChild(foot);
         app.replaceChildren(element);
     } else if (state.app.currentPage === 'cart') {
-        element = cartView(stateCopy, dispatch);
+        element = new CartView(stateCopy, dispatch).render();
         app.replaceChildren(element);
     } else {
         element = document.createElement('div');
