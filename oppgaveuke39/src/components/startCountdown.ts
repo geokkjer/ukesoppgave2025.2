@@ -1,4 +1,3 @@
-
 export default class TimerComponent extends HTMLElement {
   private timeLeft = 0;
   private intervalId: number | undefined;
@@ -13,18 +12,17 @@ export default class TimerComponent extends HTMLElement {
     const countdown = this.getAttribute("countdown") ?? "00";
     const button = this.getAttribute("button") ?? "Start 10 sek";
 
-    // Important: use import.meta.url to fetch CSS relative to this module file
-    const cssUrl = new URL("./style.css", import.meta.url).href;
-    let css = `div.countdown-container {
-  font-family: sans-serif;
-  padding: 1rem;
-  text-align: center;
-  border: 2px solid #333;
-  border-radius: 8px;
-  display: inline-block;
-}
+    let css = /*css*/`
+    .countdown-container {oaisdj
+      font-family: sans-serif;
+      padding: 1rem;
+      text-align: center;
+      border: 2px solid #333;
+      border-radius: 8px;
+      display: inline-block;
+      background: #f0f0f0;}
 
-div.countdown {
+.countdown {
   font-size: 2rem;
   margin: 1rem 0;
   color: darkblue;
@@ -42,7 +40,8 @@ button {
 
 button:hover {
   opacity: 0.9;
-}`
+}`;
+
     this.shadowRoot!.innerHTML = `
     <style >
       ${css}

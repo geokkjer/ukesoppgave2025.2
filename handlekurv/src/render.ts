@@ -1,16 +1,16 @@
 import { loginTask } from "./controller";
 import type { AppState, DispatchFunction } from "./types";
-import { loginView } from "./views/loginView";
+import  LoginView  from "./views/loginView";
 import { productsView } from "./views/productsView";
 import { addToCart } from "./controller"
-import { cartView } from "./views/cartView";
+//import { cartView } from "./views/cartView";
 import { navBar } from "./components/navBar";
 import { footer } from "./components/footer";
 import { mainView } from "./views/mainView";
 import { navigation } from "./controller";
 import { CartView } from "./views/cartClass";
 
-
+customElements.define('login-view', LoginView);
 
 export function render(state: AppState, action: string | null, value: any): void {
     const stateCopy = structuredClone(state);
@@ -40,7 +40,8 @@ export function render(state: AppState, action: string | null, value: any): void
     // Render views based on current page    
     let element: HTMLElement;
     if (state.app.currentPage === 'login') {
-        element = loginView(stateCopy, dispatch);
+        app.replaceChildren();
+        element = document.createElement('login-view');
         app.replaceChildren(element);
     } else if (state.app.currentPage === 'main') {
         element = mainView(stateCopy, dispatch);
