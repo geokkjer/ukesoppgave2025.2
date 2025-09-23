@@ -41,7 +41,8 @@ export function render(state: AppState, action: string | null, value: any): void
     let element: HTMLElement;
     if (state.app.currentPage === 'login') {
         app.replaceChildren();
-        element = document.createElement('login-view');
+        element = document.createElement('login-view') as LoginView;
+        (element as LoginView).setDispatch(dispatch);
         app.replaceChildren(element);
     } else if (state.app.currentPage === 'main') {
         element = mainView(stateCopy, dispatch);
