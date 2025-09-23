@@ -35,7 +35,7 @@ export function loginTask(model: AppState, credentials: { username: string, pass
     console.log(id);
     
     if(exist) {
-      alert('Velkommen ' + credentials.username);
+      //alert('Velkommen ' + credentials.username);
       state.app.currentPage = "products";
     } else {
       alert('Feil brukernavn eller passord');
