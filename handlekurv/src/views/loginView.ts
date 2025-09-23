@@ -72,19 +72,32 @@ export default class LoginView extends HTMLElement {
             const username = userNameInput.value.trim();
             const password = passwordInput.value.trim();
 
-            // Check if both fields are filled in
-            if (!username || !password) { 
-                alert("Please fill in both username and password");
-                return; 
-            }
+    // Check if both fields are filled in
+        if (!username || !password) {
+            alert("Please fill in both username and password.");
+            return;
+        }
 
-            // Log the credential (in real app: send to validate)
+        // Log the credentials (in real app: send to server or validate)
+        console.log("Login attempt:", { username, password });
+
+        // Simple mock login logic
+        if (username === "admin" && password === "1234") {
+            alert("Login successful!");
+
+            // Dispatch custom event for success
+            // This allows  app to listen and react to       
+            } else{
+                alert("Invalid credentials, try again.");
+
             
-            // Use the controller function instead of hardcoded check
+            // Dispatch custom event for failure
+            // This allows parent app to listen and handle failed login
             if (this.dispatch) {
                 this.dispatch('login', { username, password });
-            } else {
-                console.error('Dispatch function not set');
-            }});
-}
-}
+            }
+        }
+    
+
+    });
+}}
