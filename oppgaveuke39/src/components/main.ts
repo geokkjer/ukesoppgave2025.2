@@ -8,8 +8,10 @@ function main() {
   const app = document.getElementById("app");
   app!.innerHTML =
     /*html*/
-    `   
+    `
         <timer-component></timer-component>
-       
+
     `;
 }
+
+export default main;

@@ -1,4 +1,4 @@
-import styleText from './style.css';
+
 export default class TimerComponent extends HTMLElement {
   private timeLeft = 0;
   private intervalId: number | undefined;
@@ -13,19 +13,39 @@ export default class TimerComponent extends HTMLElement {
     const countdown = this.getAttribute("countdown") ?? "00";
     const button = this.getAttribute("button") ?? "Start 10 sek";
 
-    Important: use import.meta.url to fetch CSS relative to this module file
+    // Important: use import.meta.url to fetch CSS relative to this module file
     const cssUrl = new URL("./style.css", import.meta.url).href;
-    let css = "";
-    try {
-      const res = await fetch(cssUrl);
-      if (res.ok) css = await res.text();
-      else console.warn("Kunde inte hämta CSS:", cssUrl, res.status);
-    } catch (e) {
-      console.warn("Fetch error for CSS:", e);
-    }
+    let css = `div.countdown-container {
+  font-family: sans-serif;
+  padding: 1rem;
+  text-align: center;
+  border: 2px solid #333;
+  border-radius: 8px;
+  display: inline-block;
+}
 
+div.countdown {
+  font-size: 2rem;
+  margin: 1rem 0;
+  color: darkblue;
+}
+
+button {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  background: #007acc;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.9;
+}`
     this.shadowRoot!.innerHTML = `
-    <style>
+    <style >
+      ${css}
     </style>
       <div class="countdown-container">
         <p>${heading}</p>
