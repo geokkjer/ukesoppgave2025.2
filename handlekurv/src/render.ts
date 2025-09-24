@@ -8,7 +8,7 @@ import { navBar } from "./components/navBar";
 import { footer } from "./components/footer";
 import { mainView } from "./views/mainView";
 import { navigation } from "./controller";
-import { CartView } from "./views/cartClass";
+//import { CartView } from "./views/cartClass";
 
 customElements.define('login-view', LoginView);
 
@@ -57,8 +57,8 @@ export function render(state: AppState, action: string | null, value: any): void
         element.appendChild(foot);
         app.replaceChildren(element);
     } else if (state.app.currentPage === 'cart') {
-        element = new CartView(stateCopy, dispatch).render();
-        app.replaceChildren(element);
+        //element = new CartView(stateCopy, dispatch).render();
+        //app.replaceChildren(element);
     } else {
         element = document.createElement('div');
         element.textContent = 'Page not found';
