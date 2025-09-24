@@ -19,6 +19,14 @@ export function addToCart(state: AppState, productId: number, quantity = 1): App
 }
 export function loginTask(model: AppState, credentials: { username: string, password: string }): AppState {
   const state = structuredClone(model);
+  
+  const regex = /^[^\s@]+@[^\s@]+\.com$/;
+  if (!regex.test(credentials.username)) {
+    alert("Please enter a valid email address");
+    return state;
+  }
+  console.log('Attempting login with', credentials);
+  // Validate credentials against the model's users
   // Check if the username and password match any user in the model
   if (credentials.username === '' || credentials.password === '') {
     alert('Skriv inn brukernavn eller passord')
