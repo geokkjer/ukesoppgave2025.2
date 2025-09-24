@@ -53,8 +53,8 @@ export default class LoginView extends HTMLElement {
        const title = document.createElement('h1');
        title.textContent = 'Welcome to the Store';
        const userNameInput = document.createElement('input');
-       userNameInput.type = 'text';
-       userNameInput.placeholder = 'Brukernavn';
+       userNameInput.type = 'email';
+       userNameInput.placeholder = 'Email (ex: user@example.com)';
        const passwordInput = document.createElement('input');
        passwordInput.type = 'password';
        passwordInput.placeholder = 'Passord';
@@ -73,9 +73,17 @@ export default class LoginView extends HTMLElement {
 
     private addEventListeners(userNameInput: HTMLInputElement, passwordInput: HTMLInputElement, button: HTMLButtonElement) {
         button.addEventListener('click', () => {
+            const regex = /^[^\s@]+@[^\s@]+\.com$/;
             const username = userNameInput.value.trim();
             const password = passwordInput.value.trim();
-
+            if (!username || !password) {
+                alert("Please fill in both username and password");
+                return;
+            }
+            if (!regex.test(username)) {
+                alert("Please enter a valid email address");
+                return;
+            }
             if (this.dispatch) {
                 this.dispatch('login', { username, password });
             }
