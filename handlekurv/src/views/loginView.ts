@@ -73,17 +73,9 @@ export default class LoginView extends HTMLElement {
 // dette hadde vært fint å flytte den til controller.ts???
     private addEventListeners(userNameInput: HTMLInputElement, passwordInput: HTMLInputElement, button: HTMLButtonElement) {
         button.addEventListener('click', () => {
-            // const regex = /^[^\s@]+@[^\s@]+\.com$/;
             const username = userNameInput.value.trim();
             const password = passwordInput.value.trim();
-            // if (!username || !password) {
-            //     alert("Please fill in both username and password");
-            //     return;
-            // }
-            // if (!regex.test(username)) {
-            //     alert("Please enter a valid email address");
-            //     return;
-            // }
+           
             if (this.dispatch) {
                 this.dispatch('login', { username, password });
             }

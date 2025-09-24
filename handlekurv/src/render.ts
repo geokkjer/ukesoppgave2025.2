@@ -11,8 +11,8 @@ import { mainView } from "./views/mainView";
 import { navigation } from "./controller";
 //import { CartView } from "./views/cartClass";
 
-customElements.define('login-view', LoginView);
-customElements.define('register-view', Register);
+customElements.define('login-view', LoginView); // registrering av custom element
+customElements.define('register-view', Register); //!!!!
 
 
 export function render(state: AppState, action: string | null, value: any): void {
