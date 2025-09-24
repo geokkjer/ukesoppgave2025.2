@@ -70,7 +70,7 @@ export default class LoginView extends HTMLElement {
        element.append(title, userNameInput, passwordInput, button, registerButton, addFooter);
        this.shadowRoot?.replaceChildren(element);
     }
-
+// dette hadde vært fint å flytte den til controller.ts???
     private addEventListeners(userNameInput: HTMLInputElement, passwordInput: HTMLInputElement, button: HTMLButtonElement) {
         button.addEventListener('click', () => {
             const regex = /^[^\s@]+@[^\s@]+\.com$/;
