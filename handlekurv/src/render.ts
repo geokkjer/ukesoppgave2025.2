@@ -66,6 +66,10 @@ export function render(state: AppState, action: string | null, value: any): void
         element.appendChild(foot);
         app.replaceChildren(element);
     } else if (state.app.currentPage === 'cart') {
+        element = document.createElement('div');
+        element.textContent = 'Cart view is under construction';
+        //app.replaceChildren();
+        //const nav = navBar(stateCopy, dispatch);
         //element = new CartView(stateCopy, dispatch).render();
         //app.replaceChildren(element);
     } else {
