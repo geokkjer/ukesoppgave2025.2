@@ -2,7 +2,7 @@ import type { AppState, CartItem, DispatchFunction } from "../types";
 import { footer } from "../components/footer";
 import { navBar } from "../components/navBar";
 
-export class CartView {
+export default class CartView {
     private state: AppState;
     private dispatch: DispatchFunction;
 
