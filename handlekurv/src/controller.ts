@@ -41,9 +41,10 @@ export function loginTask(model: AppState, credentials: { username: string, pass
       alert('Feil brukernavn eller passord');
     }
     
-  } else {
-    alert('Feil brukernavn eller passord');
-  }
+  } 
+  // else {
+  //   alert('Feil brukernavn eller passord');
+  // }
   return state;
 }
 export function navigation(state: AppState, value: any): AppState {

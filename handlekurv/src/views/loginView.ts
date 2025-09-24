@@ -60,10 +60,14 @@ export default class LoginView extends HTMLElement {
        passwordInput.placeholder = 'Passord';
        const button = document.createElement('button');
        button.textContent = 'Logg inn';
+       const registerButton = document.createElement('button');
+       registerButton.textContent="Register"
        this.addEventListeners(userNameInput, passwordInput, button);
-       this.addEventListeners(userNameInput, passwordInput, button);
-       
-       element.append(title, userNameInput, passwordInput, button, addFooter);
+        registerButton.addEventListener('click', ()=> {
+            if (this.dispatch) {this.dispatch('register-view', 'register')}
+        })
+
+       element.append(title, userNameInput, passwordInput, button, registerButton, addFooter);
        this.shadowRoot?.replaceChildren(element);
     }
 
@@ -72,32 +76,9 @@ export default class LoginView extends HTMLElement {
             const username = userNameInput.value.trim();
             const password = passwordInput.value.trim();
 
-    // Check if both fields are filled in
-        if (!username || !password) {
-            alert("Please fill in both username and password.");
-            return;
-        }
-
-        // Log the credentials (in real app: send to server or validate)
-        console.log("Login attempt:", { username, password });
-
-        // Simple mock login logic
-        if (username === "admin" && password === "1234") {
-            alert("Login successful!");
-
-            // Dispatch custom event for success
-            // This allows  app to listen and react to       
-            } else{
-                alert("Invalid credentials, try again.");
-
-            
-            // Dispatch custom event for failure
-            // This allows parent app to listen and handle failed login
             if (this.dispatch) {
                 this.dispatch('login', { username, password });
             }
         }
-    
-
-    });
+        );
 }}
