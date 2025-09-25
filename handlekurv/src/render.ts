@@ -1,6 +1,7 @@
 import { loginTask } from "./controller";
 import type { AppState, DispatchFunction } from "./types";
 import  LoginView  from "./views/loginView";
+import Register from "./components/register";
 import { productsView } from "./views/productsView";
 import { addToCart } from "./controller"
 //import { cartView } from "./views/cartView";
@@ -8,9 +9,11 @@ import { navBar } from "./components/navBar";
 import { footer } from "./components/footer";
 import { mainView } from "./views/mainView";
 import { navigation } from "./controller";
-import { CartView } from "./views/cartClass";
+//import { CartView } from "./views/cartClass";
 
-customElements.define('login-view', LoginView);
+customElements.define('login-view', LoginView); // registrering av custom element
+customElements.define('register-view', Register); //!!!!
+
 
 export function render(state: AppState, action: string | null, value: any): void {
     const stateCopy = structuredClone(state);
@@ -20,6 +23,9 @@ export function render(state: AppState, action: string | null, value: any): void
     // Handle actions
     if (action == 'login') {
         state = loginTask(state, value);
+    }
+    if (action === 'register-view'){
+        state = navigation(stateCopy, value)
     }
     if (action == 'addToCart') {
         state = addToCart(stateCopy,value);
@@ -44,7 +50,10 @@ export function render(state: AppState, action: string | null, value: any): void
         element = document.createElement('login-view') as LoginView;
         (element as LoginView).setDispatch(dispatch);
         app.replaceChildren(element);
-    } else if (state.app.currentPage === 'main') {
+    }else if(state.app.currentPage === 'register') {
+        element = document.createElement('register-view') as Register;
+        app.replaceChildren(element);
+    }else if (state.app.currentPage === 'main') {
         element = mainView(stateCopy, dispatch);
         app.replaceChildren(element);
     } else if (state.app.currentPage === 'products') {
@@ -57,8 +66,12 @@ export function render(state: AppState, action: string | null, value: any): void
         element.appendChild(foot);
         app.replaceChildren(element);
     } else if (state.app.currentPage === 'cart') {
-        element = new CartView(stateCopy, dispatch).render();
-        app.replaceChildren(element);
+        element = document.createElement('div');
+        element.textContent = 'Cart view is under construction';
+        //app.replaceChildren();
+        //const nav = navBar(stateCopy, dispatch);
+        //element = new CartView(stateCopy, dispatch).render();
+        //app.replaceChildren(element);
     } else {
         element = document.createElement('div');
         element.textContent = 'Page not found';

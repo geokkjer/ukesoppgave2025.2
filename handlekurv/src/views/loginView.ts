@@ -53,38 +53,32 @@ export default class LoginView extends HTMLElement {
        const title = document.createElement('h1');
        title.textContent = 'Welcome to the Store';
        const userNameInput = document.createElement('input');
-       userNameInput.type = 'text';
-       userNameInput.placeholder = 'Brukernavn';
+       userNameInput.type = 'email';
+       userNameInput.placeholder = 'Email (ex: user@example.com)';
        const passwordInput = document.createElement('input');
        passwordInput.type = 'password';
        passwordInput.placeholder = 'Passord';
        const button = document.createElement('button');
        button.textContent = 'Logg inn';
+       const registerButton = document.createElement('button');
+       registerButton.textContent="Register"
        this.addEventListeners(userNameInput, passwordInput, button);
-       this.addEventListeners(userNameInput, passwordInput, button);
-       
-       element.append(title, userNameInput, passwordInput, button, addFooter);
+        registerButton.addEventListener('click', ()=> {
+            if (this.dispatch) {this.dispatch('register-view', 'register')}
+        })
+
+       element.append(title, userNameInput, passwordInput, button, registerButton, addFooter);
        this.shadowRoot?.replaceChildren(element);
     }
-
+// dette hadde vært fint å flytte den til controller.ts???
     private addEventListeners(userNameInput: HTMLInputElement, passwordInput: HTMLInputElement, button: HTMLButtonElement) {
         button.addEventListener('click', () => {
             const username = userNameInput.value.trim();
             const password = passwordInput.value.trim();
-
-            // Check if both fields are filled in
-            if (!username || !password) { 
-                alert("Please fill in both username and password");
-                return; 
-            }
-
-            // Log the credential (in real app: send to validate)
-            
-            // Use the controller function instead of hardcoded check
+           
             if (this.dispatch) {
                 this.dispatch('login', { username, password });
-            } else {
-                console.error('Dispatch function not set');
-            }});
-}
-}
+            }
+        }
+        );
+}}
