@@ -2,8 +2,8 @@ import { BaseComponent } from "./baseComponent";
 
 export class Header extends BaseComponent {
    private readonly links = [
-      { name: "Produkter", href: "#" },
-      { name: "Handlekurv 🛒", href: "#" }
+      { name: "Produkter", href: "#/produkter" },
+      { name: "Handlekurv 🛒", href: "#/handlekurv" }
     ];
     
     render() {
