@@ -14,6 +14,8 @@ Steg for steg
     npm create vite@latest handlekurv-v3
     cd handlekurv-v3
     npm install
+
+    
     ```
 
 1. Kopier inn eksisterende kode fra denne uken
