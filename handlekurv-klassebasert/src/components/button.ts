@@ -7,29 +7,24 @@ export interface ButtonProps {
 
 export class Button extends BaseComponent {
   private props: ButtonProps = {};
-
   constructor(props: ButtonProps = {}) {
     super();
     this.props = {
       label: "Button",
-      className: "login-button",
       ...props,
     };
   }
 
   static get observedAttributes() {
-    return ["label", "variant", "size", "disabled", "type", "class"];
+    return ["label", "class"];
   }
 
   attributeChangedCallback(name: string, oldValue: string, newValue: string) {
     if (oldValue !== newValue) {
-      switch (name) {
-        case "label":
-          this.props.label = newValue;
-          break;
-        case "class":
-          this.props.className = newValue;
-          break;
+      if (name === "label") {
+        this.props.label = newValue;
+      } else if (name === "class") {
+        this.props.className = newValue;
       }
       this.render();
     }
@@ -65,10 +60,5 @@ export class Button extends BaseComponent {
         ${this.props.label}
       </button>
     `;
-
-    const button = this.shadowRoot!.querySelector("button");
-    if (button) {
-      button.addEventListener("click", () => console.log("Button clicked!"));
-    }
   }
 }

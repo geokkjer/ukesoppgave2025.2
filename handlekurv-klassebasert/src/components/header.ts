@@ -34,7 +34,6 @@ export class Header extends BaseComponent {
         <header>
           <nav class="navbar">
             <h1 class="logo">Nettbutikk</h1>
-            <custom-button label="Hei Charles!" class="nav-button" clickHandler={() => console.log("Header clicked!")}></custom-button>
             <ul class="nav-links">
               <li>
                 <a href="#">${this.links[0].name}</a>
