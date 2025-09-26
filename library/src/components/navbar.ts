@@ -1,10 +1,7 @@
 import { BaseElement } from "./base";
 import navbarCss from "../css/navbar.css?inline";
+import type { NavLink } from "../types/types";
 
-interface NavLink {
-  title: string;
-  url: string;
-}
 export class Navbar extends BaseElement {
     static get observedAttributes() {
     return ['links'];
@@ -21,7 +18,7 @@ export class Navbar extends BaseElement {
       </style>
       <nav>
         <ul>
-            <h1>Library</h1>
+          <li><h1>Library</h1></li>
           ${this.links.map(link => `<li><a href="${link.url}">${link.title}</a></li>`).join('')}
         </ul>
       </nav>
