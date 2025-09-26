@@ -1,6 +1,6 @@
 export class BaseComponent extends HTMLElement {
-    static propNames: string[] = [];
-    
+   propNames: string[] = [];
+
     constructor() {
         super();
         this.attachShadow({ mode: 'open' });
@@ -8,6 +8,7 @@ export class BaseComponent extends HTMLElement {
     connectedCallback() {
         this.render();
     }
+
     render() {
     }
 
