@@ -1,4 +1,6 @@
 // Functional component system using templates
+import { MainView } from './views/main.js';
+
 type Component = () => HTMLElement;
 
 // Component factory function
@@ -13,7 +15,7 @@ function createComponent(templateId: string): Component {
 // Create components
 const Header = createComponent('header-template');
 const Aside = createComponent('aside-template');
-const Main = createComponent('main-template');
+const Main = MainView; // Using the dedicated main view function
 const Footer = createComponent('footer-template');
 
 // App component that composes other components

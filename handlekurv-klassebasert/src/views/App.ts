@@ -92,18 +92,15 @@ export class App extends BaseComponent {
             </div>
         `;
 
-        // Add event listeners after rendering
         this.attachEventListeners();
     }
 
-    // Method to attach event listeners for navigation
     private attachEventListeners() {
         this.addEventListener('navigate', (event: Event) => {
             const customEvent = event as CustomEvent;
             this.navigateToPage(customEvent.detail.page);
         });
 
-        // Example: Listen for user login success
         this.addEventListener('login-success', (event: Event) => {
             const customEvent = event as CustomEvent;
             this.setState({

@@ -19,14 +19,7 @@ export class LoginView extends BaseComponent {
           font-size: 1rem;
           width: 200px;
         }
-        button {
-          padding: 0.5rem 1rem;
-          font-size: 1rem;
-          background-color: darkblue;
-          color: white;
-          border: none;
-          cursor: pointer;
-        }
+       
       </style> 
       <main id="main">
         <h1>Welcome to the Store</h1>
