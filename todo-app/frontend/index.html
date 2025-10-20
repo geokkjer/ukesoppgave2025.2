@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App - htmx + Express</title>
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>📝 Todo App</h1>
+        <p class="subtitle">Built with htmx + Express.js</p>
+
+        <div class="input-group">
+            <input 
+                type="text" 
+                id="todoInput" 
+                name="todoInput"
+                placeholder="Add a new todo..."
+            >
+            <button 
+                type="button"
+                hx-post="/todos"
+                hx-target="#todoList"
+                hx-swap="beforeend"
+                hx-include="#todoInput"
+                hx-on="htmx:afterRequest: if(event.detail.xhr.status===201) document.getElementById('todoInput').value='';"
+            >
+                Add
+            </button>
+        </div>
+
+        <ul class="todo-list" id="todoList" hx-get="/todos" hx-trigger="load">
+            <!-- Todos will be loaded here -->
+        </ul>
+    </div>
+
+    <script type="module" src="/src/main.ts"></script>
+</body>
+</html>
